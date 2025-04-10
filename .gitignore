@@ -1,0 +1,16 @@
+# front end
+node_modules
+build
+dist
+dist-ssr
+package-lock.json
+
+# back end
+__pycache__
+migrations
+venv
+.env
+server/static
+server/templates
+
+.unlighthouse

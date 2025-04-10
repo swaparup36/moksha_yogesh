@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Underdog&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Underdog", system-ui;
+  src: local('Arial');
+  ascent-override: 105%;
+  descent-override: 35%;
+  line-gap-override: 10%;
+}
+
+:root {
+  font-family: "Underdog", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-gradient-to-tr from-darkBrown via-darkBrown to-brown;
+  overflow-y: scroll;
+}
+
+/* NProgress */
+#nprogress .bar {
+  @apply !bg-amber-700;
+}
+#nprogress .peg {
+  @apply !shadow !shadow-amber-700;
+}
+#nprogress .spinner-icon {
+  @apply !border-x !border-amber-700;
+}
+
+.wrap-balance {
+  text-wrap: balance;
+}
+
+/* Markdown/Prose modifications */
+.markdown {
+  @apply prose prose-sm sm:prose-base prose-invert max-w-none;
+}
+.markdown :is(:where(h1, h2, h3, h4, h5, h6, p):not(:where([class~='not-prose'] *))) {
+  @apply first:mt-0;
+}
+.markdown :is(:where(p):not(:where([class~='not-prose'] *))) {
+  @apply last:mb-0;
+}
+.markdown.markdown-a :is(:where(a):not(:where([class~='not-prose'] *))) {
+  @apply text-amber-600 hover:text-amber-500 font-medium transition-colors no-underline;
+}
+
+/* Scrollbar */
+.scrollbar::-webkit-scrollbar,
+.scrollbar::-webkit-scrollbar-track,
+.scrollbar::-webkit-scrollbar-track-piece {
+  @apply block w-1.5;
+}
+.scrollbar::-webkit-scrollbar-button {
+  @apply hidden;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply block bg-orange-800/70;
+}
+
+.h-scroll {
+  @apply pb-2 flex overflow-auto scrollbar;
+}
+
+.scrollbar.horizontal::-webkit-scrollbar,
+.scrollbar.horizontal::-webkit-scrollbar-track,
+.scrollbar.horizontal::-webkit-scrollbar-track-piece,
+.h-scroll::-webkit-scrollbar,
+.h-scroll::-webkit-scrollbar-track,
+.h-scroll::-webkit-scrollbar-track-piece {
+  @apply block h-1 w-auto;
+}
+
+@supports (-webkit-text-stroke: 1px currentcolor) {
+  .text-stroke {
+    -webkit-text-stroke: 1px currentcolor;
+    -webkit-text-fill-color: transparent;
+  }
+}
