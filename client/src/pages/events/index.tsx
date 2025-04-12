@@ -85,6 +85,7 @@ interface EventCardProps {
 const EventCard = memo(
   ({ event }: EventCardProps) => {
     const [isHovered, setIsHovered] = useState(false)
+    
     console.log(event);
     return (
       <div
