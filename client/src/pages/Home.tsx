@@ -11,7 +11,7 @@ export function Component() {
         <title>MOKSHA IX | Home</title>
       </Helmet>
       <main className={styles['home']}>
-        <SplashCursor></SplashCursor>
+        {/* <SplashCursor></SplashCursor> */}
         <Hero />
         <Specials />
         <GetStarted />
