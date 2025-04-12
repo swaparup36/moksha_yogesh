@@ -3,7 +3,7 @@ import Hero from '~/components/Home/Hero'
 import Specials from '~/components/Home/Specials'
 import GetStarted from '~/components/Home/GetStarted'
 import styles from '~/components/Home/styles.module.css'
-import SplashCursor from '../components/SplashCursor'
+// import SplashCursor from '../components/SplashCursor'
 export function Component() {
   return (
     <>
@@ -11,7 +11,7 @@ export function Component() {
         <title>MOKSHA IX | Home</title>
       </Helmet>
       <main className={styles['home']}>
-        <SplashCursor></SplashCursor>
+        {/* <SplashCursor></SplashCursor> */}
         <Hero />
         <Specials />
         <GetStarted />
