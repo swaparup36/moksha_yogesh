@@ -9,9 +9,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import { useRef } from 'react';
 import { start } from 'nprogress'
 
-
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-// import SplashCursor from '../components/SplashCursor'
 export function Component() {
   const main = useRef(null)
   const hero = useRef(null)
@@ -50,7 +48,6 @@ export function Component() {
         <title>MOKSHA IX | Home</title>
       </Helmet>
       <main className={styles['home']} ref={main}>
-        {/* <SplashCursor></SplashCursor> */}
         <div ref={hero}>
           <Hero />
         </div>
@@ -60,6 +57,7 @@ export function Component() {
         <div ref={gs}>
           <GetStarted />
         </div>
+
       </main>
     </>
   )
