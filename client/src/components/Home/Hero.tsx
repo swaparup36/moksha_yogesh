@@ -2,10 +2,57 @@ import { classNames } from '@arpansaha13/utils';
 import Container from '~common/Container';
 import styles from './styles.module.css';
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react'
 
 export default function Hero() {
   // Adjusted sizes for better responsiveness
   const imageSizeStyles = 'w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem]';
+  const textRef = useRef<HTMLHeadingElement>(null)
+  const typing = useRef(false)
+
+useEffect(() => {
+  const textElement = textRef.current
+  if (!textElement || typing.current) return
+
+  const text = 'Step into a realm where nature sings, leaves whisper, and paradise unfolds in golden hues.'
+  let index = 0
+  textElement.textContent = ''
+  typing.current = true
+
+  const typeWriter = () => {
+    if (index < text.length) {
+      textElement.textContent += text.charAt(index)
+      index++
+      setTimeout(() => {
+        typeWriter()
+      }, 50)
+    } else {
+      setTimeout(() => {
+        let reverseIndex = text.length
+        const unTypeWriter = () => {
+          if (reverseIndex >= 0) {
+            textElement.textContent = text.substring(0, reverseIndex)
+            reverseIndex--
+            setTimeout(() => {
+              unTypeWriter()
+            }, 30)
+          } else {
+            index = 0
+            typing.current = false
+            typeWriter()
+          }
+        }
+        unTypeWriter()
+      }, 1000)
+    }
+  }
+
+  typeWriter()
+
+})
+
+
+
 
   return (
     <section
@@ -64,13 +111,14 @@ export default function Hero() {
             </p>
 
             {/* Description */}
-            <div className="mt-4 md:mt-6 text-gray-300 text-base sm:text-lg leading-relaxed">
+            <div className="mt-4 md:mt-6 flex text-gray-300 text-base sm:text-lg leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1.2 }}
               >
-                Step into a realm where nature sings, leaves whisper, and paradise unfolds in golden hues.
+                <h1 ref={textRef} className='text-xl max-w-80 h-10'></h1>
+                {/* <span className='text-xl h-10'>|</span> */}
               </motion.p>
             </div>
           </div>
@@ -82,6 +130,7 @@ export default function Hero() {
           <motion.div
             className={classNames(
               imageSizeStyles,
+              styles['hero-img-shadow'],
               'absolute rounded-full bg-gradient-to-br from-pink-400 via-red-300 to-amber-300 opacity-20'
             )}
             animate={{
