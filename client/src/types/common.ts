@@ -1,6 +1,6 @@
 export type HTMLElementTagNames = keyof HTMLElementTagNameMap
 
-export type ClubSlug = 'fine-arts' | 'malhar' | 'dzire' | 'aaveg' | 'nlc' | 'phewsion' | 'pixels' | 'collabs' | 'wecan' | 'Animystics'
+export type ClubSlug = 'fine-arts' | 'malhar' | 'dzire' | 'aaveg' | 'nlc' | 'phewsion' | 'pixels' | 'collabs' | 'wecan' | 'animystics'
 
 // For events and contests
 
