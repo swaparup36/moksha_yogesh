@@ -57,7 +57,6 @@ export function Component() {
         <div ref={gs}>
           <GetStarted />
         </div>
-
       </main>
     </>
   )
