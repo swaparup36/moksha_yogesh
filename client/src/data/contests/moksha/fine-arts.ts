@@ -5,44 +5,42 @@ export const fineArts: Contest[] = [
   {
     id: 2,
     type: 'solo',
-    slug: 'kalakriti',
-    name: 'KalaKriti',
-    subtitle: 'Painting Competition',
+    slug: 'wear-your-imagination',
+    name: 'WEAR YOUR IMAGINATION',
+    subtitle: 'Costume competition',
     badges: ['solo'],
     image: {
       src: '/images/contests/generic-poster.png',
     },
-    deadline: getDateFromIST('2024-02-01', '23:59:00'),
+    deadline: getDateFromIST('2025-04-03', '23:59:00'),
     description: [
       {
-        p: 'It is an event to provide a platform for students to showcase their talent, express their creativity and develop their artistic skills.',
+        p: 'Participants will design and create a costume on the spot within 3 hours using basic materials like newspapers, cardboards, etc. They have to wear it and do their own makeup too. The focus is on originality and presentation.',
       },
       {
         bold: true,
         p: 'Theme',
       },
       {
-        p: 'Comics (Super hero or Super villain)',
+        bold: true,
+        p: 'Venue:- Knowledge Park(DAY 3)'
       },
       {
         bold: true,
-        p: 'Event Managers',
-      },
-      {
-        ul: ['Hrishikesh Munde (72492 70240)', 'Prathamesh Shitre (87677 14582)'],
-      },
+        p: 'Time:- 2-4pm'
+      }
     ],
     instructions: [
       { heading: 'Rules' },
       {
         ul: [
-          'Sketches can be only a pencil sketch or coloured.',
-          'Drawing sheets will be provided on site by the organizers.',
-          'Every participant should bring their own pencil, rubber, board, colors during the contest day. Nothing related to them will be provided on site.',
-          'Duration of the competition will be 2 hours.',
-          'Participants must look after their own items carefully by themselves.',
-          'Participants have to bring their school Id card.',
-          'If any unfair means are found with the participant, his/her artwork will be canceled.',
+        'TEAM SIZE : 2',
+        'TIME LIMIT : 2 hours ',
+        'Participants will be provided 2 hours to complete their outfit.',
+        'Costumes must align with the theme. No offensive , inappropriate or culturally insensitive outfits allowed.',
+        'Materials like cardboard, paper and other accessories required for the outfit will be provided at the time of competition.',
+        'Participants will be given 1 min to display their outfits with a short act, walk or pose.',
+        'Participants are allowed to choose another person as their model during the time of judgement.',
         ],
       },
     ],
@@ -50,44 +48,38 @@ export const fineArts: Contest[] = [
   {
     id: 3,
     type: 'solo',
-    subtitle: 'Artwork',
-    slug: 'comiquest',
-    name: 'Comiquest',
+    subtitle: 'Face Art Competition',
+    slug: 'face-pallete',
+    name: 'Face Pallete',
     badges: ['solo'],
     image: {
       src: '/images/contests/generic-poster.png',
     },
-    deadline: getDateFromIST('2024-02-01', '23:59:00'),
+    deadline: getDateFromIST('2025-04-03', '23:59:00'),
     description: [
       {
-        p: 'Comic characters or themes (All forms of art such as Digital, Traditional, Vector, etc are allowed) (All entries will be accepted online. No artwork will be accepted offline).',
+        p: 'In teams of two, one person paints on the other\'s face based on a theme given on the spot. Face paints and brushes will be provided. It\'s a time-based creative challenge highlighting detail and imagination.',
       },
       {
         bold: true,
-        p: 'Event Managers',
+        p: 'Venue:- Knowledge Park(DAY 2)'
       },
       {
-        ul: [
-          'Soumyadeep Shome : +91 96120 52905',
-          'Soumyadeep Bhowmik : +91 93629 49590',
-          'Anamika Debnath : +91 60091 55970',
-          'Nabadiganta Acharjee: 60094 08045',
-        ],
-      },
+        bold: true,
+        p: 'Time:- 11am-1pm'
+      }
     ],
     instructions: [
       { heading: 'Rules' },
       {
         ul: [
-          'Maximum two entries are allowed for each contestant.',
-          'Both digital artwork and hand drawn artwork can be submitted.',
-          'There will be two groups one for Digital work and the other is for Hand drawn art work ,so that the judgement can be fair.',
-          'Winners will be selected from each group.',
-          'Artworks will be uploaded to fine-arts club’s Instagram page.',
-          'The winners art works will be printed out and showcased in Fine arts club exhibition.',
-          'The best works will be showcased in our insta page.',
-          'The submission of artworks will be closed on the 1st day of Moksha',
-          'Results will be announced on the last day of Moksha.',
+        'TEAM SIZE : 2',
+        'TIME LIMIT : 2 hours ',
+        'Team size is of 2 people , one as a painter and the other as the painting.',
+        'Time limit is 2 hours.',
+        'Organizers will be providing face paints and brushes.',
+        'People allergic to face paints are not allowed to participate.',
+        'Both the participants should be from the same college/ institute.',
         ],
       },
     ],

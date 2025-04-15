@@ -11,12 +11,12 @@ import type { ClubSlug, Contest } from '~/types'
 const mokshaContests = Object.freeze<{ [key in ClubSlug]?: Contest[] }>({
   nlc: nlc,
   dzire: dzire,
-  pixels: pixels,
+  // pixels: pixels,
   aaveg: aaveg,
   malhar: malhar,
   'fine-arts': fineArts,
-  wecan: wecan,
-  collabs: collab,
+  // wecan: wecan,
+  // collabs: collab,
 })
 
 export default mokshaContests
