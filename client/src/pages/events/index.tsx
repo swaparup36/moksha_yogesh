@@ -139,7 +139,7 @@ const EventCard = memo(
 
           {/* Back */}
           <div
-            className='flex-col'
+            className='flex-col overflow-y-scroll'
             style={{
               position: 'absolute',
               width: '100%',
