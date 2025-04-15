@@ -25,7 +25,7 @@ export function Component() {
             href='mailto:moksha.nita.web@gmail.com'
             target='_blank'
             rel='noopener noreferrer'
-            className='font-medium text-amber-600 hover:text-amber-500'
+            className='font-medium text-emerald-600 hover:text-emerald-500'
           >
             moksha.nita.web@gmail.com
           </a>
@@ -38,24 +38,24 @@ export function Component() {
 Component.displayName = 'Contact'
 
 const Card = ({ data }: { data: Contact }) => (
-  <Sheet className='p-4 overflow-hidden'>
-    <p className='text-lg sm:text-xl text-amber-500 font-semibold'>{data.name}</p>
-    <p className='text-xs 2xs:text-sm text-gray-400 uppercase'>{data.designation}</p>
+  <Sheet className='w-full px-8 py-2 group relative flex flex-col bg-emerald-900/30 backdrop-blur-md text-sm overflow-hidden rounded-2xl shadow-lg ring-1 ring-emerald-700/40 transition-all duration-300 hover:scale-[1.015] hover:shadow-emerald-800/50 hover:ring-emerald-400/60'>
+    <p className='text-xl text-emerald-300 font-semibold drop-shadow-sm'>{data.name}</p>
+    <p className='text-sm 2xs:text-sm text-gray-400 uppercase'>{data.designation}</p>
 
     <div className='mt-4 flex items-center'>
-      <div className='flex-shrink-0 mr-2 w-5 h-5 2xs:w-6 2xs:h-6 text-emerald-500'>
-        <Icon icon={whatsappIcon} className='block' color='inherit' width='100%' height='100%' />
+      <div className='flex-shrink-0 mr-5 w-5 h-5 2xs:w-6 2xs:h-6 text-green-500'>
+        <Icon icon={whatsappIcon} className='block' color='inherit' width='150%' height='150%' />
       </div>
-      <p className='text-sm 2xs:text-base text-gray-200'>{data.whatsApp}</p>
+      <p className='text-lg 2xs:text-base text-gray-200'>{data.whatsApp}</p>
     </div>
 
-    <div className='mt-2 flex items-center text-rose-500'>
-      <div className='flex-shrink-0 mr-2 w-5 h-5 2xs:w-6 2xs:h-6'>
-        <Icon icon={gmailIcon} className='block' color='inherit' width='100%' height='100%' />
+    <div className='mt-2 flex h-20 items-center text-blue-500'>
+      <div className='flex-shrink-0 mr-5 w-5 h-5 2xs:w-6 2xs:h-6'>
+        <Icon icon={gmailIcon} className='block' color='inherit' width='150%' height='150%' />
       </div>
       <div className='text-gray-200'>
-        <p className='inline-block text-sm 2xs:text-base'>{data.email.split('@')[0]}</p>
-        <p className='inline-block text-xs 2xs:text-sm text-gray-400'>@{data.email.split('@')[1]}</p>
+        <p className='inline-block text-lg 2xs:text-base'>{data.email.split('@')[0]}</p>
+        <p className='inline-block text-sm 2xs:text-sm text-gray-400'>@{data.email.split('@')[1]}</p>
       </div>
     </div>
   </Sheet>
