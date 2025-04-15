@@ -57,6 +57,9 @@ const RenderProseElement = ({ proseElement }: RenderProseElementProps) => {
   if (!isNullOrUndefined(proseElement.p))
     return <p className={proseElement.bold ? 'font-semibold' : ''}>{proseElement.p}</p>
 
+  if (!isNullOrUndefined(proseElement.a))
+    return <a href={`${proseElement.a}`}>{proseElement.a}</a>
+
   if (!isNullOrUndefined(proseElement.ul)) {
     return (
       <ul>
