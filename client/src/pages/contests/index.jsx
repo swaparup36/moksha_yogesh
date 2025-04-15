@@ -102,19 +102,17 @@ const ClubContests = memo(
 const ContestCard = memo(
   ({ clubSlug, contest }) => {
     const [isHovered, setIsHovered] = useState(false)
-    const [onClick, setOnClick] = useState(false)
 
     return (
       <Sheet className="relative w-full h-[304px] [perspective:1000px]">
         <motion.div
           onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
-          onClick={() => setOnClick(!onClick)}
-          
+          onHoverEnd={() => {setIsHovered(false)}}
+          onTouchEnd={() => setIsHovered(!isHovered)}
           className="relative w-full h-full"
         >
           <motion.div
-            animate={{ rotateY: isHovered || onClick ? 180 : 0 }}
+            animate={{ rotateY: isHovered ? 180 : 0 }}
             transition={{ duration: .7 }}
             className="w-full h-full relative"
             style={{

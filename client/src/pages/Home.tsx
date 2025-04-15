@@ -18,11 +18,6 @@ export function Component() {
 
   useGSAP(() => {
     const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: main.current,
-        end: "+=1500",
-        scrub: 1
-      }
     })
     tl.from(hero.current, {
       opacity: 0
@@ -32,7 +27,9 @@ export function Component() {
       xPercent: -100,
       opacity: 0,
       scrollTrigger: {
-        start: "center bottom"
+        start: "center bottom",
+        end: "+=100",
+        scrub: 1,
       }
     })
     

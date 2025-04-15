@@ -13,7 +13,8 @@ import MLink from '~common/Links/MLink'
 import DLink from '~common/Links/DLink'
 import Picture from '~/components/pictures/Picture'
 import { getEvents } from '~loaders/events.loader'
-import type { Event } from '~/types'
+import type { Event, Heading, Para, ProseElement } from '~/types'
+import { isNullOrUndefined } from '@arpansaha13/utils'
 
 interface LoaderData {
   mokshaEventsList: readonly Event[]
@@ -24,7 +25,6 @@ export const loader = getEvents
 
 export function Component() {
   const { mokshaEventsList, udaanEventsList } = useLoaderData() as LoaderData
-
   return (
     <>
       <Helmet>
@@ -52,7 +52,7 @@ const MokshaEvents = memo(({ mokshaEventsList, className }: MokshaEventsProps) =
     <h2 className='text-4xl text-center font-bold border-b-2 pt-3 pb-3 m-4 border-green-500'>Moksha</h2>
     <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
       {mokshaEventsList.map(event => (
-        <div key={event.id} className='min-w-[16rem]'>
+        <div key={event.id} className='min-w-[16rem] relative overflow-clip'>
           <EventCard event={event} />
         </div>
       ))}
@@ -68,9 +68,9 @@ interface UdaanEventsProps {
 const UdaanEvents = memo(({ udaanEventsList, className }: UdaanEventsProps) => (
   <section className={className} id='udaan-events'>
     <h2 className='text-4xl text-center font-bold border-b-2 pb-3 m-4 border-green-500'>Udaan</h2>
-    <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+    <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-6'>
       {udaanEventsList.map(event => (
-        <div key={event.id} className='min-w-[16rem]'>
+        <div key={event.id} className='min-w-[16rem] relative overflow-clip'>
           <EventCard event={event} />
         </div>
       ))}
@@ -85,12 +85,12 @@ interface EventCardProps {
 const EventCard = memo(
   ({ event }: EventCardProps) => {
     const [isHovered, setIsHovered] = useState(false)
-    
-    console.log(event);
+    let p = ((event.description[1] ?? event.description[0]) as Para).p ?? ((event.description[1] ?? event.description[0]) as Heading).heading
     return (
       <div
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseLeave={() => {setIsHovered(false)}}
+        onTouchEnd={() => setIsHovered(!isHovered)}
         style={{
           perspective: 1000,
           width: '100%',
@@ -156,14 +156,14 @@ const EventCard = memo(
               backfaceVisibility: 'hidden',
             }}
           >
-            <p className='text-sm leading-relaxed'>{(event.description[0] as any).p ?? 'More details coming soon.'}</p>
+            <p className='text-sm leading-relaxed'>{p ?? 'More details coming soon.'}</p>
 
             <div className='flex justify-items-end mt-20'>
             <SocialShare
               data={{
                 url: `/events/${event.club}/${event.slug}`,
                 title: `Moksha event - ${event.name}`,
-                text: (event.description[0] as any).p ?? '',
+                text: p
               }}
               className='text-emerald-400 hover:text-emerald-300'
             >
@@ -173,10 +173,10 @@ const EventCard = memo(
               <span className='sr-only'>Share</span>
             </SocialShare>
 
-            <div className='px-4 pt-2 pb-4 mt-auto flex items-center justify-end lg:justify-between'>
+            <div className=' mt-auto flex items-center justify-end lg:justify-between'>
                 <Link
                   to={`/events/${event.club}/${event.slug}`}
-                  className='hidden lg:block font-medium text-emerald-400 hover:text-emerald-300 transition-colors'
+                  className='lg:block font-medium p-4 text-emerald-400 hover:text-emerald-300 transition-colors'
                 >
                   <span>View event</span>
                   <Icon icon={rightIcon} className='inline-block w-5 h-5 ml-1' />

@@ -97,7 +97,7 @@ export const dzire: Event[] = [
         heading: 'About the Event',
       },
       {
-        p: 'Double the fun, double the energy! Join us for our Duet Dance Competition, featuring talented pairs showcasing their skills.',
+        p: 'Double the fun, double the energy! Join us for our Duet Dance Competition , featuring talented pairs showcasing their skills.',
       },
       {
         p: 'Two hearts, one beat, endless energy!',
