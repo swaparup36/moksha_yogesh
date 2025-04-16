@@ -45,13 +45,13 @@ const Faq = memo(
     return (
       <Sheet
         id={slug}
-        className={`p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1e293b] to-[#0f172a] shadow-xl transition-all duration-300 border border-white/10`}
+        className={`p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1e293b] to-[#0f172a] shadow-xl transition-all duration-300 border border-white/10 `}
       >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl sm:text-2xl font-bold text-white">{faq.question}</h2>
+        <div className="flex items-center justify-between mb-4  flex-col sm:flex-row">
+          <h2 className="text-xl sm:text-2xl sm:w-3/4 font-bold text-white">{faq.question}</h2>
           <button
             onClick={() => setOpen(!open)}
-            className="text-sm font-semibold px-4 py-2 bg-white text-slate-900 rounded-xl shadow-md hover:bg-gray-100 transition"
+            className="text-sm font-semibold sm:w-1/4 px-4 py-2 bg-white text-slate-900 rounded-xl shadow-md hover:bg-gray-100 transition"
             aria-expanded={open}
           >
             {open ? (

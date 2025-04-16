@@ -15,7 +15,10 @@ export const fineArts: Event[] = [
         heading: 'About the Event',
       },
       {
-        p: 'An art exhibition where participants will submit their artworks based on a given theme. It\'s all about expressing creativity through painting, sketching, or mixed media.',
+        p: 'An art exhibition where participants will submit their artworks based on a given theme.',
+      },
+      {
+        p: 'It\'s all about expressing creativity through painting, sketching.',
       },
       {
         bold: true,
@@ -53,7 +56,10 @@ export const fineArts: Event[] = [
         heading: 'About the Event',
       },
       {
-        p: 'Teams will create artistic models or sculptures using provided junk materials. It’s a test of creativity and innovation through recycling.',
+        p: 'Teams will create artistic models or sculptures using provided junk materials.',
+      },
+      {
+        p: 'It\'s a test of creativity and innovation through recycling.',
       },
       {
         bold: true,
@@ -132,10 +138,14 @@ export const fineArts: Event[] = [
         heading: 'About the Event',
       },
       {
-        p: 'In teams of two, one person paints on the other’s face based on a theme given on the spot. Face paints and brushes will be provided.',
+        p: 'In teams of two, one person paints on the other\'s face based on a theme given on the spot.',
       },
       {
-        p: 'It’s a time-based creative challenge highlighting detail and imagination.',
+        bold: true,
+        p: 'Face paints and brushes will be provided.',
+      },
+      {
+        p: 'It\'s a time-based creative challenge highlighting detail and imagination.',
       },
       {
         bold: true,
@@ -176,7 +186,10 @@ export const fineArts: Event[] = [
         p: 'Artistaan will have exciting and fun games related to art and creativity.',
       },
       {
-        p: 'It\'s all about enjoying the moment, so anyone who wants to have fun can join in! No pressure—just come, play, and vibe with your fellow artists.',
+        p: 'It\'s all about enjoying the moment, so anyone who wants to have fun can join in!',
+      },
+      {
+        p: 'No pressure—just come, play, and vibe with your fellow artists.',
       },
       {
         bold: true,
