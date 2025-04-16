@@ -46,21 +46,16 @@ export function Component() {
           padding: 0;
           box-sizing: border-box;
         }
-
-        body {
+          
+          .card {
           font-family: 'Muli', sans-serif;
-          background: #f4f4f4;
-        }
-
-        .card {
           display: flex;
           align-items: center;
-          background: #ffffff;
+          background: rgb(125,125,125, 0.3);
           height: 600px;
           width: 900px;
           margin: 2% auto;
           box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.1);
-          border: 1px solid #ddd;
           position: relative;
           z-index: 500;
         }

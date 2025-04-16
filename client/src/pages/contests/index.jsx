@@ -42,7 +42,7 @@ export function Component() {
       </Container>
 
       <MokshaContests mokshaContestsMap={mokshaContestsMap} className='mb-12 space-y-12' />
-      <UdaanContests udaanContestsList={udaanContestsList} className='space-y-6' />
+      {/* <UdaanContests udaanContestsList={udaanContestsList} className='space-y-6' /> */}
     </>
   )
 }
