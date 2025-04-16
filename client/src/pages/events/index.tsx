@@ -13,12 +13,29 @@ import MLink from '~common/Links/MLink'
 import DLink from '~common/Links/DLink'
 import Picture from '~/components/pictures/Picture'
 import { getEvents } from '~loaders/events.loader'
-import type { Event, Heading, Para, ProseElement } from '~/types'
-import { isNullOrUndefined } from '@arpansaha13/utils'
+import type { Event, Heading, Para } from '~/types'
+interface LoaderData {
+  mokshaEventsList: readonly Event[]
+  udaanEventsList: readonly Event[]
+}
 
 interface LoaderData {
   mokshaEventsList: readonly Event[]
   udaanEventsList: readonly Event[]
+}
+
+interface UdaanEventsProps {
+  udaanEventsList: readonly Event[]
+  className?: string
+}
+
+interface MokshaEventsProps {
+  mokshaEventsList: readonly Event[]
+  className?: string
+}
+
+interface EventCardProps {
+  readonly event: Event
 }
 
 export const loader = getEvents
@@ -34,7 +51,7 @@ export function Component() {
       <Container>
         <h1 className='sr-only'>Events</h1>
         <MokshaEvents mokshaEventsList={mokshaEventsList} className='mb-12' />
-        <UdaanEvents udaanEventsList={udaanEventsList} />
+        {/* <UdaanEvents udaanEventsList={udaanEventsList} /> */}
       </Container>
     </>
   )
@@ -55,11 +72,6 @@ const MokshaEvents = memo(({ mokshaEventsList, className }: MokshaEventsProps) =
     </div>
   </section>
 ))
-
-interface UdaanEventsProps {
-  udaanEventsList: readonly Event[]
-  className?: string
-}
 
 const UdaanEvents = memo(({ udaanEventsList, className }: UdaanEventsProps) => (
   <section className={className} id='udaan-events'>
