@@ -42,10 +42,6 @@ export function Component() {
 
 Component.displayName = 'Events'
 
-interface MokshaEventsProps {
-  mokshaEventsList: readonly Event[]
-  className?: string
-}
 
 const MokshaEvents = memo(({ mokshaEventsList, className }: MokshaEventsProps) => (
   <section id='moksha-events' className={className}>
