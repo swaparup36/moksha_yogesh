@@ -1,9 +1,11 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useLoaderData } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 import shareIcon from '@iconify-icons/mdi/share'
 import rightIcon from '@iconify-icons/mdi/chevron-right'
+
 import SocialShare from '~/components/SocialShare'
 import Sheet from '~common/Sheet'
 import Container from '~common/Container'
@@ -11,32 +13,18 @@ import MLink from '~common/Links/MLink'
 import DLink from '~common/Links/DLink'
 import Picture from '~/components/pictures/Picture'
 import { getEvents } from '~loaders/events.loader'
-import type { Event } from '~/types'
+import type { Event, Heading, Para, ProseElement } from '~/types'
+import { isNullOrUndefined } from '@arpansaha13/utils'
 
 interface LoaderData {
   mokshaEventsList: readonly Event[]
   udaanEventsList: readonly Event[]
 }
 
-interface UdaanEventsProps {
-  udaanEventsList: readonly Event[]
-  className?: string
-}
-
-interface MokshaEventsProps {
-  mokshaEventsList: readonly Event[]
-  className?: string
-}
-
-interface EventCardProps {
-  readonly event: Event
-}
-
 export const loader = getEvents
 
 export function Component() {
   const { mokshaEventsList, udaanEventsList } = useLoaderData() as LoaderData
-
   return (
     <>
       <Helmet>
@@ -45,7 +33,6 @@ export function Component() {
 
       <Container>
         <h1 className='sr-only'>Events</h1>
-
         <MokshaEvents mokshaEventsList={mokshaEventsList} className='mb-12' />
         <UdaanEvents udaanEventsList={udaanEventsList} />
       </Container>
@@ -55,96 +42,151 @@ export function Component() {
 
 Component.displayName = 'Events'
 
-const UdaanEvents = memo(
-  ({ udaanEventsList, className }: UdaanEventsProps) => (
-    <section className={className} id='udaan-events'>
-      <h2 className='mb-6 text-4xl text-center font-semibold border-b-2 border-transparent'>Udaan</h2>
 
-      <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-        {udaanEventsList.map(event => (
-          <div key={event.id} className='min-w-[16rem]'>
-            <EventCard event={event} />
-          </div>
-        ))}
-      </div>
-    </section>
-  ),
-  () => true
-)
+const MokshaEvents = memo(({ mokshaEventsList, className }: MokshaEventsProps) => (
+  <section id='moksha-events' className={className}>
+    <h2 className='text-4xl text-center font-bold border-b-2 pt-3 pb-3 m-4 border-green-500'>Moksha</h2>
+    <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+      {mokshaEventsList.map(event => (
+        <div key={event.id} className='min-w-[16rem] relative overflow-clip'>
+          <EventCard event={event} />
+        </div>
+      ))}
+    </div>
+  </section>
+))
 
-const MokshaEvents = memo(
-  ({ mokshaEventsList, className }: MokshaEventsProps) => (
-    <section id='moksha-events' className={className}>
-      <h2 className='mb-6 text-4xl text-center font-semibold border-b-2 border-transparent'>Moksha</h2>
+interface UdaanEventsProps {
+  udaanEventsList: readonly Event[]
+  className?: string
+}
 
-      <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-        {mokshaEventsList.map(event => (
-          <div key={event.id} className='min-w-[16rem]'>
-            <EventCard event={event} />
-          </div>
-        ))}
-      </div>
-    </section>
-  ),
-  () => true
-)
+const UdaanEvents = memo(({ udaanEventsList, className }: UdaanEventsProps) => (
+  <section className={className} id='udaan-events'>
+    <h2 className='text-4xl text-center font-bold border-b-2 pb-3 m-4 border-green-500'>Udaan</h2>
+    <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-6'>
+      {udaanEventsList.map(event => (
+        <div key={event.id} className='min-w-[16rem] relative overflow-clip'>
+          <EventCard event={event} />
+        </div>
+      ))}
+    </div>
+  </section>
+))
+
+interface EventCardProps {
+  readonly event: Event
+}
 
 const EventCard = memo(
-  ({ event }: EventCardProps) => (
-    <Sheet className="w-full group relative flex flex-col bg-emerald-900/30 backdrop-blur-md text-sm overflow-hidden rounded-2xl shadow-lg ring-1 ring-emerald-700/40 transition-all duration-300 hover:scale-[1.015] hover:shadow-emerald-800/50 hover:ring-emerald-400/60">
-
-      <MLink to={`/events/${event.club}/${event.slug}`} as="div" className="relative block h-[304px] z-10">
-        <div className="w-full h-48 flex items-center justify-center relative">
-          <Picture picture={event.image} alt={`moksha-event-${event.slug}-poster`} />
-        </div>
-
-        <div className="w-full px-4 pt-4">
-          <h3 className="text-lg text-emerald-300 font-semibold drop-shadow-sm">
-            <DLink
-              to={`/events/${event.club}/${event.slug}`}
-              className="lg:hover:underline line-clamp-1"
-            >
-              {event.name}
-            </DLink>
-          </h3>
-
-          <p className="text-sm text-gray-300/90">{event.subtitle}</p>
-
-          <div className="mt-2 text-sm text-gray-200 space-y-1 line-clamp-2">
-            {event.description.map((para: any, i) => (
-              <p key={i}>{para.p}</p>
-            ))}
-          </div>
-        </div>
-      </MLink>
-
-      <div className="px-4 pt-2 pb-4 w-full flex items-center justify-end lg:justify-between z-10">
-        <Link
-          to={`/events/${event.club}/${event.slug}`}
-          className="hidden lg:block font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
-        >
-          <span>View event</span>
-          <span className="inline-block w-5 h-5 ml-1">
-            <Icon icon={rightIcon} className="inline-block" color="inherit" width="100%" height="100%" />
-          </span>
-        </Link>
-
-        <SocialShare
-          data={{
-            url: `/events/${event.club}/${event.slug}`,
-            title: `Moksha event - ${event.name}`,
-            text: (event.description[0] as any).p,
+  ({ event }: EventCardProps) => {
+    const [isHovered, setIsHovered] = useState(false)
+    let p = ((event.description[1] ?? event.description[0]) as Para).p ?? ((event.description[1] ?? event.description[0]) as Heading).heading
+    return (
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {setIsHovered(false)}}
+        onTouchEnd={() => setIsHovered(!isHovered)}
+        style={{
+          perspective: 1000,
+          width: '100%',
+          height: '420px',
+          position: 'relative',
+        }}
+      >
+        <motion.div
+          animate={{ rotateY: isHovered ? 180 : 0 }}
+          transition={{ duration: 0.7 }}
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+            transformStyle: 'preserve-3d',
           }}
-          className="block text-emerald-400 hover:text-emerald-300"
         >
-          <div className="w-6 h-6 transition-colors">
-            <Icon icon={shareIcon} className="block" color="inherit" width="100%" height="100%" aria-hidden />
-          </div>
-          <span className="sr-only">Share</span>
-        </SocialShare>
-      </div>
-    </Sheet>
-  ),
-  (prev, next) => prev.event.id === next.event.id
-);
+          {/* Front */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              backfaceVisibility: 'hidden',
+              borderRadius: '1rem',
+              overflow: 'hidden',
+            }}
+          >
+            <Sheet className='w-full h-full flex flex-col bg-black/50 backdrop-blur-md text-sm shadow-lg ring-1 ring-emerald-700/40'>
+              <MLink to={`/events/${event.club}/${event.slug}`} as='div' className='relative block h-1/2 z-10'>
+                <div className='w-full h-full flex items-center justify-center'>
+                  <Picture picture={event.image} alt={`moksha-event-${event.slug}-poster`} />
+                </div>
+                <div className='w-full px-4 pt-4'>
+                  <h3 className='text-lg text-emerald-300 font-semibold drop-shadow-sm line-clamp-1'>
+                    <DLink to={`/events/${event.club}/${event.slug}`} className='lg:hover:underline'>
+                      {event.name}
+                    </DLink>
+                  </h3>
+                  <p className='text-sm text-gray-300/90'>{event.subtitle}</p>
+                </div>
+              </MLink>
 
+            </Sheet>
+          </div>
+
+          {/* Back */}
+          <div
+            className='flex-col overflow-y-scroll'
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              borderRadius: '1rem',
+              backgroundColor: 'black',
+              color: 'white',
+              padding: '1.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              transform: 'rotateY(180deg)',
+              backfaceVisibility: 'hidden',
+            }}
+          >
+            <p className='text-sm leading-relaxed'>{p ?? 'More details coming soon.'}</p>
+
+            <div className='flex justify-items-end mt-20'>
+            <SocialShare
+              data={{
+                url: `/events/${event.club}/${event.slug}`,
+                title: `Moksha event - ${event.name}`,
+                text: p
+              }}
+              className='text-emerald-400 hover:text-emerald-300'
+            >
+              <div className='w-6 h-6 transition-colors'>
+                <Icon icon={shareIcon} className='block' />
+              </div>
+              <span className='sr-only'>Share</span>
+            </SocialShare>
+
+            <div className=' mt-auto flex items-center justify-end lg:justify-between'>
+                <Link
+                  to={`/events/${event.club}/${event.slug}`}
+                  className='lg:block font-medium p-4 text-emerald-400 hover:text-emerald-300 transition-colors'
+                >
+                  <span>View event</span>
+                  <Icon icon={rightIcon} className='inline-block w-5 h-5 ml-1' />
+                </Link>
+            </div>
+            
+            </div>
+            
+          </div>
+        </motion.div>
+      </div>
+    )
+  },
+  (prev, next) => prev.event.id === next.event.id
+)
+
+export default EventCard

@@ -15,8 +15,8 @@ const mokshaContests = Object.freeze<{ [key in ClubSlug]?: Contest[] }>({
   aaveg: aaveg,
   malhar: malhar,
   'fine-arts': fineArts,
-  wecan: wecan,
-  collabs: collab,
+  // wecan: wecan,
+  // collabs: collab,
 })
 
 export default mokshaContests

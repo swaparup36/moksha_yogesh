@@ -1,6 +1,8 @@
 import Container from '~common/Container'
 import styles from './styles.module.css'
 
+
+
 const MEDIA = Object.freeze({
   mobile: '(max-width: 639px)',
   tablet: '(max-width: 1023px)',
@@ -98,7 +100,7 @@ const EleganciaTeaser = () => (
 
 export default function Specials() {
   return (
-    <section className={styles['specials-bg']}>
+    <section className={`${styles['specials-bg']}`}>
       <Container className='lg:h-cover lg:max-h-[38rem] pt-8 pb-8 sm:pb-0 sm:pt-12 flex items-center justify-center'>
         <div className='w-full grid grid-rows-4 grid-cols-2 sm:grid-cols-3 lg:grid-rows-2 lg:grid-cols-5'>
           <div className='col-span-2 sm:col-span-3 lg:col-span-2 xl:col-span-3'>
