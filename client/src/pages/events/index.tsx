@@ -58,7 +58,7 @@ Component.displayName = 'Events'
 const UdaanEvents = memo(
   ({ udaanEventsList, className }: UdaanEventsProps) => (
     <section className={className} id='udaan-events'>
-      <h2 className='mb-6 text-4xl text-center font-semibold border-b-2 border-amber-900/70'>Udaan</h2>
+      <h2 className='mb-6 text-4xl text-center font-semibold border-b-2 border-transparent'>Udaan</h2>
 
       <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
         {udaanEventsList.map(event => (
@@ -75,7 +75,7 @@ const UdaanEvents = memo(
 const MokshaEvents = memo(
   ({ mokshaEventsList, className }: MokshaEventsProps) => (
     <section id='moksha-events' className={className}>
-      <h2 className='mb-6 text-4xl text-center font-semibold border-b-2 border-amber-900/70'>Moksha</h2>
+      <h2 className='mb-6 text-4xl text-center font-semibold border-b-2 border-transparent'>Moksha</h2>
 
       <div className='h-scroll sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
         {mokshaEventsList.map(event => (
